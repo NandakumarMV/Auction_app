@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const userBids = mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Users",
+    ref: "User",
   },
   item: {
     type: mongoose.Schema.Types.ObjectId,
@@ -11,6 +11,10 @@ const userBids = mongoose.Schema({
   },
   bidPrice: {
     type: Number,
+  },
+  submitTime: {
+    type: Date,
+    default: Date.now,
   },
 });
 

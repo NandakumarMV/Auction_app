@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const itemSchema = mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "Users",
+    ref: "User",
   },
   itemName: {
     type: String,
@@ -15,6 +15,7 @@ const itemSchema = mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+
   expired: {
     type: Boolean,
     default: false,
@@ -25,17 +26,6 @@ const itemSchema = mongoose.Schema({
       return new Date(this.createdAt.getTime() + 60 * 60 * 1000);
     },
   },
-});
-
-itemSchema.pre("save", function (next) {
-  if (this.isNew) {
-    setTimeout(() => {
-      this.expired = true;
-      next();
-    }, 60 * 60 * 1000);
-  } else {
-    next();
-  }
 });
 
 const AuctionItem = mongoose.model("AuctionItem", itemSchema);

@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AddItemModal from "./AddItemModal";
 import UserItemCard from "./UserItemCard";
+import { useGetUserItemsMutation } from "../slices/userApiSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserItems } from "../slices/auctionSlice";
 
 const AddItemsPage = () => {
   const [isModalOpen, setModalOpen] = useState(false);
+  const [getItems] = useGetUserItemsMutation();
+  const dispatch = useDispatch();
 
   const openModal = () => {
     setModalOpen(true);
@@ -12,7 +17,19 @@ const AddItemsPage = () => {
   const closeModal = () => {
     setModalOpen(false);
   };
+  const gettingItems = async () => {
+    const res = await getItems().unwrap();
+    console.log(res, "resss");
+    dispatch(setUserItems(res));
+  };
+  useEffect(() => {
+    gettingItems();
+  }, []);
+  useEffect(() => {
+    gettingItems();
+  }, [isModalOpen]);
 
+  const userItems = useSelector((state) => state.auctionItems.userItems);
   return (
     <div>
       <div className="flex justify-center">
@@ -24,7 +41,7 @@ const AddItemsPage = () => {
         </button>
       </div>
       <div className="space-y-3 mt-5">
-        <UserItemCard />
+        <UserItemCard userItems={userItems} />
       </div>
 
       <AddItemModal isOpen={isModalOpen} onClose={closeModal} />

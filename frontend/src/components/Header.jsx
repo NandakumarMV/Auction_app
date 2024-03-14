@@ -34,7 +34,7 @@ const Header = () => {
 
           {/* Navigation Links */}
           <div className=" md:block">
-            <div className="flex space-x-4">
+            <div className="flex space-x-5">
               {userInfo ? (
                 <>
                   <p className="text-gray-600 hover:text-black px-3 py-2 ">
@@ -45,19 +45,36 @@ const Header = () => {
                   </p>
                   <Link to="/home">
                     {" "}
-                    <p className="text-gray-600 px-3 py-2 flex justify-center items-center ">
+                    <p className="text-gray-600 px-3 py-2 flex justify-center items-center font-semibold hover:text-sky-700 hover:font-bold">
                       Home
                     </p>
                   </Link>
                   <Link to="/add-item">
                     {" "}
-                    <p className="text-gray-600 px-3 py-2 flex justify-center items-center ">
-                      Add Item
+                    <p className="text-gray-600 px-3 py-2 flex justify-center items-center font-semibold hover:text-sky-700 hover:font-bold">
+                      Items
                     </p>
                   </Link>
-
+                  <Link to="/my-bids">
+                    {" "}
+                    <p className="text-gray-600 px-3 py-2 flex justify-center items-center font-semibold hover:text-sky-700 hover:font-bold">
+                      Bids Results
+                    </p>
+                  </Link>
+                  <Link to="/auction-results">
+                    {" "}
+                    <p className="text-gray-600 px-3 py-2 flex justify-center items-center font-semibold hover:text-sky-700 hover:font-bold">
+                      Auction Results
+                    </p>
+                  </Link>
+                  <Link to="/shop">
+                    {" "}
+                    <p className="text-gray-600 px-3 py-2 flex justify-center items-center font-semibold hover:text-sky-700 hover:font-bold">
+                      Shop
+                    </p>
+                  </Link>
                   <p
-                    className="text-gray-600 hover:text-red-600 px-3 py-2 flex justify-center items-center "
+                    className="text-gray-600 hover:text-red-600 px-3 py-2 flex justify-center items-center font-semibold"
                     onClick={logoutHandler}
                   >
                     Logout

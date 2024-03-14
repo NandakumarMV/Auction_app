@@ -17,6 +17,9 @@ import store from "./store.js";
 import HomePage from "./components/HomePage.jsx";
 import UserPrivateRoute from "./components/userProtectRoute.jsx";
 import AddItemsPage from "./components/AddItemsPage.jsx";
+import MyBidPage from "./components/MyBidPage.jsx";
+import AuctionResultpage from "./components/AuctionResultpage.jsx";
+import ShopPage from "./components/ShopPage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -26,6 +29,9 @@ const router = createBrowserRouter(
       <Route path="" element={<UserPrivateRoute />}>
         <Route path="/home" element={<HomePage />} />
         <Route path="/add-item" element={<AddItemsPage />} />
+        <Route path="/my-bids" element={<MyBidPage />} />
+        <Route path="/auction-results" element={<AuctionResultpage />} />
+        <Route path="/shop" element={<ShopPage />} />
       </Route>
     </Route>
   )

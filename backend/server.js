@@ -8,7 +8,10 @@ import connectDB from "./config/db.js";
 connectDB();
 const port = process.env.PORT || 5000;
 import userRoutes from "./routes/userRoutes.js";
+import updateExpiredFlagMiddleware from "./middlewares/updateExpiredMiddleware.js";
 const app = express();
+
+app.use(updateExpiredFlagMiddleware);
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
 app.use(express.json());

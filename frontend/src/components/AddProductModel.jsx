@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { useSubmitItemMutation } from "../slices/userApiSlice";
+import { useAddProductMutation } from "../slices/userApiSlice";
 
-const AddItemModal = ({ isOpen, onClose }) => {
-  const [itemName, setItemName] = useState("");
-  const [itemPrice, setItemPrice] = useState("");
-  const [submitItem] = useSubmitItemMutation();
+const AddProductModel = ({ isOpen, onClose }) => {
+  const [name, setItemName] = useState("");
+  const [price, setItemPrice] = useState("");
+  const [addProduct] = useAddProductMutation();
   const handleItemNameChange = (e) => {
     setItemName(e.target.value);
   };
@@ -14,7 +14,7 @@ const AddItemModal = ({ isOpen, onClose }) => {
   };
 
   const handleSubmit = async () => {
-    const res = await submitItem({ itemName, itemPrice });
+    const res = await addProduct({ name, price });
 
     setItemName("");
     setItemPrice("");
@@ -29,19 +29,19 @@ const AddItemModal = ({ isOpen, onClose }) => {
       }`}
     >
       <div className="bg-white w-96 p-4 mx-auto mt-20 rounded-md shadow-md">
-        <h2 className="text-xl font-bold mb-4">Add Item</h2>
-        <label className="block mb-2">Item Name:</label>
+        <h2 className="text-xl font-bold mb-4">Add Product</h2>
+        <label className="block mb-2">Product Name:</label>
         <input
           type="text"
-          value={itemName?.toUpperCase()}
+          value={name?.toUpperCase()}
           onChange={handleItemNameChange}
           className="w-full p-2 border border-gray-300 rounded-md mb-4"
           required
         />
-        <label className="block mb-2">Minimum Bid Price:</label>
+        <label className="block mb-2"> Price:</label>
         <input
           type="text"
-          value={itemPrice}
+          value={price}
           onChange={handleItemPriceChange}
           className="w-full p-2 border border-gray-300 rounded-md mb-4"
           required
@@ -57,4 +57,4 @@ const AddItemModal = ({ isOpen, onClose }) => {
   );
 };
 
-export default AddItemModal;
+export default AddProductModel;
