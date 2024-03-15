@@ -16,7 +16,12 @@ import {
   getUserAuctionItems,
   userItemBids,
 } from "../controllers/auctionController.js";
-import { addproduct } from "../controllers/productController.js";
+import {
+  addproduct,
+  getAllProduct,
+  getuserProducts,
+  purchaseProduct,
+} from "../controllers/productController.js";
 //user Authentication Routes
 router.post("/", registerUser);
 router.post("/auth", authUser);
@@ -33,5 +38,8 @@ router.get("/get-user-auctions", protect, getAuctionResults);
 
 //handling Shoping routes
 router.post("/add-product", protect, addproduct);
+router.get("/get-user-product", protect, getuserProducts);
+router.get("/get-all-product", protect, getAllProduct);
+router.post("/purchase-product", protect, purchaseProduct);
 
 export default router;

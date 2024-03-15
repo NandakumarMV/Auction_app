@@ -15,6 +15,15 @@ const productModel = mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  purchasedUser: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: false,
+  },
 });
 
 const Products = mongoose.model("Products", productModel);

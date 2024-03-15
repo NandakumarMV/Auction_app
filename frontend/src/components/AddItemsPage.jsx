@@ -19,7 +19,6 @@ const AddItemsPage = () => {
   };
   const gettingItems = async () => {
     const res = await getItems().unwrap();
-    console.log(res, "resss");
     dispatch(setUserItems(res));
   };
   useEffect(() => {

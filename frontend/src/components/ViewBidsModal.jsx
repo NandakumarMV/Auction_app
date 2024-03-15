@@ -8,7 +8,6 @@ const ViewBidsModal = ({ isOpen, onClose, itemId }) => {
   const dispatch = useDispatch();
   const apiCall = async () => {
     const res = await getItemBids(itemId).unwrap();
-    console.log(res);
     dispatch(setBidList(res));
   };
   useEffect(() => {

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import ViewBidsModal from "./ViewBidsModal";
 
 const UserItemCard = ({ userItems }) => {
-  console.log(userItems, "useritems");
   const [isModalOpen, setModalOpen] = useState(false);
   const openModal = () => {
     setModalOpen(true);

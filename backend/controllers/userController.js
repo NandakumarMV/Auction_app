@@ -48,7 +48,7 @@ const registerUser = async (req, res) => {
       throw new Error("invalid user data");
     }
   } catch (err) {
-    console.log(err);
+    res.status(500).json({ error: "Internal server error" });
   }
 };
 const logOutUser = async (req, res) => {

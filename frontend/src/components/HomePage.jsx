@@ -9,7 +9,6 @@ const HomePage = () => {
   const dispatch = useDispatch();
   const getList = async () => {
     const res = await auctionItems().unwrap();
-    console.log(res, "fromn homee");
     dispatch(setAuctionList(res));
   };
   useEffect(() => {

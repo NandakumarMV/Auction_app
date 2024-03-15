@@ -75,6 +75,25 @@ export const userApiSlice = apiSlice.injectEndpoints({
         body: data,
       }),
     }),
+    getProduct: builder.mutation({
+      query: () => ({
+        url: `${USERS_URL}/get-user-product`,
+        method: "get",
+      }),
+    }),
+    getAllProduct: builder.mutation({
+      query: () => ({
+        url: `${USERS_URL}/get-all-product`,
+        method: "get",
+      }),
+    }),
+    purchaseProduct: builder.mutation({
+      query: (data) => ({
+        url: `${USERS_URL}/purchase-product`,
+        method: "post",
+        body: data,
+      }),
+    }),
   }),
 });
 export const {
@@ -89,4 +108,7 @@ export const {
   useGetUserBidsMutation,
   useGetUserAuctionsMutation,
   useAddProductMutation,
+  useGetProductMutation,
+  useGetAllProductMutation,
+  usePurchaseProductMutation,
 } = userApiSlice;

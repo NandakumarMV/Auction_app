@@ -6,7 +6,6 @@ const updateExpiredFlagMiddleware = async (req, res, next) => {
       expiresAt: { $lt: new Date() },
       expired: false,
     });
-    console.log(expiredItems);
     for (const item of expiredItems) {
       item.expired = true;
       await item.save();

@@ -3,18 +3,13 @@ import UserBids from "../models/userBidsModel.js";
 
 const addItemHelper = async (itemName, minPrice, userId) => {
   try {
-    console.log(itemName, minPrice, userId, "details are here");
     const item = new AuctionItem({
       userId: userId,
       itemName: itemName,
       minBidAmt: minPrice,
     });
 
-    console.log(item);
-
     await item.save();
-
-    console.log("Item saved successfully");
 
     return { success: true, message: "Item saved successfully" };
   } catch (error) {
@@ -52,9 +47,7 @@ const allAuctions = async (userId) => {
 };
 const addingBid = async (userId, itemId, bidPrice) => {
   try {
-    console.log(itemId, "this is item id");
     const existingBid = await UserBids.findOne({ userId, item: itemId });
-    console.log(existingBid, "existing bid check");
     if (existingBid) {
       return {
         success: false,
@@ -155,8 +148,6 @@ const usersAuction = async (userId) => {
         });
       }
     }
-
-    console.log(result, "aggregation result");
 
     return result;
   } catch (error) {
